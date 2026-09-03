@@ -1,9 +1,24 @@
-<!-- BEGIN:nextjs-agent-rules -->
+# Project notes
 
-# This is NOT the Next.js you know
+Author portfolio site — a dark (black / gold / navy) marketing site adapted from the
+layout of the sibling `../judy` project, with its e-commerce (cart, Stripe checkout) and
+blog/admin features removed. Pages: Home, About, Books (showcase only), Contact.
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+## Stack
 
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+- **Next.js 15.5.20** (App Router, `app/` at the repo root — no `src/`), React 18,
+  TypeScript, Tailwind CSS v4, Framer Motion, Embla Carousel, `react-fast-marquee`,
+  `react-icons`. This is stable Next 15 — standard conventions apply.
+- `npm run dev` / `npm run build` / `npm start`.
 
-<!-- END:nextjs-agent-rules -->
+## Conventions
+
+- Theme tokens live in `app/globals.css` (`--gold`, `--navy`, `--background`, …); most
+  component colours are inline Tailwind arbitrary values (`bg-[#0b1f3a]`, `text-[#c69a3c]`).
+- `AUTHOR` is a placeholder brand name used in the header, footer and metadata.
+- Bio and book copy in `app/components/*` and `app/contexts/BookSelectionContext.tsx`
+  is placeholder text. Images in `public/images/` are placeholders carried over from
+  the reference project — replace keeping the same filenames.
+
+> The previous "This is NOT the Next.js you know" block was written by a Next 16 canary
+> that is no longer installed; it does not apply to this stable Next 15 setup.
