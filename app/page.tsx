@@ -3,9 +3,8 @@ import About from './components/About';
 import Books from './components/Books';
 import Contact from './components/Contact';
 import BookAbout from './components/BookAbout';
-import BookAbout2 from './components/BookAbout2';
 import BookHands from './components/BookHands';
-import BookHands2 from './components/BookHands2';
+import ContactSection from './components/ContactSection';
 import { BookSelectionProvider } from './contexts/BookSelectionContext';
 
 export default function Home() {
@@ -19,9 +18,10 @@ export default function Home() {
           <BookAbout />
         </main>
         <BookHands />
-        <BookAbout2 />
-        <BookHands2 />
-        <Contact />
+        <div className="bg-[#0b1526]">
+          <ContactSection />
+          <Contact />
+        </div>
       </div>
     </BookSelectionProvider>
   );

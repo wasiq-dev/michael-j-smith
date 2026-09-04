@@ -23,9 +23,9 @@ const books: Book[] = [
     description:
       'A sweeping story about resilience, memory and the quiet courage it takes to begin again. Placeholder description — replace this with the real synopsis for the first book. It should run two to four sentences so the layout keeps its shape, drawing the reader in without giving away the ending.',
     heroImage: '/images/hero-book.jpg',
-    aboutImage: '/images/about-the-book.png',
+    aboutImage: '/images/book-other-position.png',
     featuresImage: '/images/goodthings.png',
-    handsImage: '/images/hand-left.png',
+    handsImage: '/images/book-in-hand.png',
   },
   {
     id: 'book2',

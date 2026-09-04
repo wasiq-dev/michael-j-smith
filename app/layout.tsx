@@ -26,24 +26,27 @@ const barlow = Barlow_Condensed({
 });
 
 export const metadata: Metadata = {
-  title: "AUTHOR | Official Website",
+  title: "Michael J.Smith | Official Website",
   description:
-    "The official website of AUTHOR. Explore the books, read about the author's journey, and get in touch.",
-  keywords: "AUTHOR, author, books, writer, novels, literature, storytelling",
-  authors: [{ name: "AUTHOR" }],
-  creator: "AUTHOR",
-  publisher: "AUTHOR",
+    "The official website of Michael J.Smith. Explore the books, read about the author's journey, and get in touch.",
+  keywords: "Michael J.Smith, author, books, writer, novels, literature, storytelling",
+  authors: [{ name: "Michael J.Smith" }],
+  creator: "Michael J.Smith",
+  publisher: "Michael J.Smith",
+  icons: {
+    icon: '/favicon.png',
+  },
   openGraph: {
-    title: "AUTHOR | Official Website",
+    title: "Michael J.Smith | Official Website",
     description:
-      "The official website of AUTHOR. Explore the books, read about the author's journey, and get in touch.",
+      "The official website of Michael J.Smith. Explore the books, read about the author's journey, and get in touch.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AUTHOR | Official Website",
-    description: "The official website of AUTHOR. Explore the books and get in touch.",
+    title: "Michael J.Smith | Official Website",
+    description: "The official website of Michael J.Smith. Explore the books and get in touch.",
   },
   robots: {
     index: true,
@@ -60,6 +63,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${anton.variable} ${inter.variable} ${poppins.variable} ${barlow.variable}`}
+      suppressHydrationWarning
     >
       <body>{children}</body>
     </html>

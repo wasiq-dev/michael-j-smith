@@ -1,4 +1,4 @@
-'use client';
+-'use client';
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -41,7 +41,7 @@ export default function HeroContent({ className = '' }: HeroContentProps) {
           viewport={{ once: false }}
           style={goldText}
         >
-          AU
+          MIC
         </motion.span>
 
         <span style={{ letterSpacing: '0.2em', marginLeft: '0.4em' }}></span>
@@ -53,7 +53,7 @@ export default function HeroContent({ className = '' }: HeroContentProps) {
           viewport={{ once: false }}
           style={goldText}
         >
-          THOR
+          HAEL
         </motion.span>
       </h1>
 
@@ -62,14 +62,15 @@ export default function HeroContent({ className = '' }: HeroContentProps) {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
         viewport={{ once: false }}
-        className="relative z-10 w-[250px] h-[333px] sm:w-[350px] sm:h-[467px] md:w-[450px] md:h-[600px] lg:w-[550px] lg:h-[733px] xl:w-[750px] xl:h-[1000px] mt-4 sm:mt-6 md:mt-8 lg:mt-12 xl:mt-16"
+        className="relative z-10 w-[220px] h-[293px] sm:w-[308px] sm:h-[411px] md:w-[396px] md:h-[528px] lg:w-[484px] lg:h-[645px] xl:w-[660px] xl:h-[880px] mt-4 sm:mt-6 md:mt-8 lg:mt-12 xl:mt-16"
       >
         <Image
-          src="/images/judy1.png"
+          src="/images/author-hero.png"
           alt="Portrait of the author"
           fill
           className="object-contain"
           priority
+          quality={100}
         />
       </motion.div>
     </div>

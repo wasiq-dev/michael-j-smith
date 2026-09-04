@@ -1,19 +1,21 @@
 'use client';
 
 import AboutHeader from '../components/AboutHeader';
-import AboutAbout from '../components/AboutAbout';
-import PublishingPlatforms from '../components/PublishingPlatforms';
+import About from '../components/About';
+import ContactSection from '../components/ContactSection';
 import Contact from '../components/Contact';
 
 export default function AboutPage() {
   return (
     <div className="bg-[#050505] min-h-screen overflow-x-hidden">
       <AboutHeader />
-      <div className="pt-16 sm:pt-20 md:pt-24">
-        <AboutAbout />
-        <PublishingPlatforms />
+      <div className="pt-32">
+        <About />
       </div>
-      <Contact />
+      <div className="bg-[#0b1526]">
+        <ContactSection />
+        <Contact />
+      </div>
     </div>
   );
 }

@@ -27,15 +27,6 @@ export default function BookAbout2({ className = '' }: BookAbout2Props) {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           viewport={{ once: false }}
         >
-          <div className="space-y-6">
-            <h2 className="font-anton text-5xl sm:text-6xl md:text-7xl text-gold-gradient uppercase font-bold drop-shadow-md">
-              ABOUT THE BOOK
-            </h2>
-
-            <p className="font-poppins text-lg sm:text-xl text-[#d7dbe3] leading-relaxed max-w-2xl mx-auto">
-              {book2.description}
-            </p>
-          </div>
         </motion.div>
 
         <motion.div

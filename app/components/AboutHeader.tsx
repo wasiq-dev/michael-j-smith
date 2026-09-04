@@ -1,8 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
+
+const NextImage = Image;
 
 interface AboutHeaderProps {
   className?: string;
@@ -10,9 +13,9 @@ interface AboutHeaderProps {
 
 const navLinks = [
   { href: '/', label: 'HOME' },
-  { href: '/about', label: 'ABOUT THE AUTHOR' },
-  { href: '/books', label: 'ALL BOOKS' },
-  { href: '/contact', label: 'CONTACT US' },
+  { href: '/about', label: 'ABOUT' },
+  { href: '/books', label: 'BOOKS' },
+  { href: '/#bookabout', label: 'GET YOUR COPY' },
 ];
 
 export default function AboutHeader({ className = '' }: AboutHeaderProps) {
@@ -23,19 +26,25 @@ export default function AboutHeader({ className = '' }: AboutHeaderProps) {
       className={`absolute -top-2 left-0 right-0 z-30 px-4 sm:px-6 md:px-8 bg-[#050505] border-b border-[#c69a3c]/20 ${className}`}
     >
       <nav
-        className="flex justify-between items-center max-w-screen-xl mx-auto py-4"
+        className="flex justify-between items-center max-w-screen-xl mx-auto py-6"
         style={{ fontFamily: 'var(--font-poppins)' }}
       >
         <Link
           href="/"
           aria-label="Homepage"
-          className="font-anton text-2xl sm:text-3xl md:text-4xl uppercase tracking-[0.14em] text-gold-gradient hover:opacity-80 transition-opacity duration-200"
+          className="hover:opacity-80 transition-opacity duration-200"
         >
-          AUTHOR
+          <NextImage
+            src="/images/new-logo.png"
+            alt="Michael J.Smith"
+            width={180}
+            height={50}
+            className="w-auto h-14 sm:h-16 md:h-20"
+          />
         </Link>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-center space-x-8 lg:space-x-10">
+        <ul className="hidden md:flex items-center space-x-8 lg:space-x-10 -mt-4">
           {navLinks.map((link) => (
             <li key={link.label}>
               <Link
@@ -48,12 +57,12 @@ export default function AboutHeader({ className = '' }: AboutHeaderProps) {
           ))}
         </ul>
 
-        <div className="hidden md:flex items-center">
+        <div className="hidden md:flex items-center -mt-1">
           <Link
             href="/contact"
             className="bg-[#c69a3c] hover:bg-[#e8c877] text-[#0b0b0b] font-poppins font-semibold py-2 px-5 rounded-full shadow-sm hover:shadow-md transition-all duration-300 text-sm"
           >
-            Contact
+            Contact Michael
           </Link>
         </div>
 
@@ -84,28 +93,39 @@ export default function AboutHeader({ className = '' }: AboutHeaderProps) {
       </nav>
 
       {/* Mobile Navigation Menu */}
-      {isMobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="md:hidden absolute top-full left-0 right-0 bg-[#0c0c0e] shadow-lg border-t border-[#c69a3c]/20"
-        >
-          <ul className="px-4 py-4 space-y-4">
-            {[...navLinks, { href: '/contact', label: 'CONTACT' }].map((link) => (
-              <li key={link.label}>
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="md:hidden absolute top-full left-0 right-0 bg-[#0c0c0e] shadow-lg border-t border-[#c69a3c]/20"
+          >
+            <ul className="px-4 py-4 space-y-4">
+              {navLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="block text-base font-semibold tracking-wider text-[#e7e2d5] hover:text-[#e8c877] transition-colors duration-300 py-2"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
                 <Link
-                  href={link.href}
-                  className="block text-base font-semibold tracking-wider text-[#e7e2d5] hover:text-[#e8c877] transition-colors duration-300 py-2"
+                  href="/contact"
+                  className="block text-base font-semibold tracking-wider bg-[#c69a3c] hover:bg-[#e8c877] text-[#0b0b0b] rounded-xl transition-colors duration-300 py-3 text-center"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {link.label}
+                  Contact Michael
                 </Link>
               </li>
-            ))}
-          </ul>
-        </motion.div>
-      )}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

@@ -1,8 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
+
+const NextImage = Image;
 
 interface HeaderProps {
   className?: string;
@@ -10,9 +13,9 @@ interface HeaderProps {
 
 const navLinks = [
   { href: '/', label: 'HOME' },
-  { href: '/about', label: 'ABOUT THE AUTHOR' },
-  { href: '/books', label: 'ALL BOOKS' },
-  { href: '/contact', label: 'CONTACT US' },
+  { href: '/about', label: 'ABOUT' },
+  { href: '/books', label: 'BOOKS' },
+  { href: '/#bookabout', label: 'GET YOUR COPY' },
 ];
 
 export default function Header({ className = '' }: HeaderProps) {
@@ -30,13 +33,19 @@ export default function Header({ className = '' }: HeaderProps) {
         <Link
           href="/"
           aria-label="Homepage"
-          className="font-anton text-2xl sm:text-3xl md:text-4xl uppercase tracking-[0.14em] text-gold-gradient hover:opacity-80 transition-opacity duration-200"
+          className="hover:opacity-80 transition-opacity duration-200"
         >
-          AUTHOR
+          <NextImage
+            src="/images/new-logo.png"
+            alt="Michael J.Smith"
+            width={180}
+            height={50}
+            className="w-auto h-14 sm:h-16 md:h-20"
+          />
         </Link>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-center space-x-8 lg:space-x-10">
+        <ul className="hidden md:flex items-center space-x-8 lg:space-x-10 -mt-6">
           {navLinks.map((link) => (
             <li key={link.label}>
               <Link
@@ -50,12 +59,12 @@ export default function Header({ className = '' }: HeaderProps) {
         </ul>
 
         {/* Contact button (desktop) */}
-        <div className="hidden md:flex items-center">
+        <div className="hidden md:flex items-center -mt-1">
           <Link
             href="/contact"
             className="bg-[#c69a3c] hover:bg-[#e8c877] text-[#0b0b0b] font-poppins font-semibold py-2 px-5 rounded-full shadow-sm hover:shadow-md transition-all duration-300 text-sm"
           >
-            Contact
+            Contact Michael
           </Link>
         </div>
 
@@ -90,63 +99,82 @@ export default function Header({ className = '' }: HeaderProps) {
         </button>
 
         {/* Mobile Navigation Menu */}
-        {isMobileMenuOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
-              onClick={() => setIsMobileMenuOpen(false)}
-            />
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+                onClick={() => setIsMobileMenuOpen(false)}
+              />
 
-            <motion.div
-              initial={{ opacity: 0, y: -20, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -20, scale: 0.95 }}
-              transition={{
-                duration: 0.4,
-                ease: [0.4, 0.0, 0.2, 1],
-                type: 'spring',
-                stiffness: 300,
-                damping: 30,
-              }}
-              className="md:hidden absolute top-full left-4 right-4 z-50 bg-[#0c0c0e] shadow-2xl border border-[#c69a3c]/30 rounded-2xl overflow-hidden"
-              style={{
-                boxShadow:
-                  '0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(198, 154, 60, 0.12)',
-              }}
+<motion.div
+  initial={{ opacity: 0, y: -20, scale: 0.95 }}
+  animate={{ opacity: 1, y: 0, scale: 1 }}
+  exit={{ opacity: 0, y: -20, scale: 0.95 }}
+  transition={{
+    duration: 0.4,
+    ease: [0.4, 0.0, 0.2, 1],
+    type: 'spring',
+    stiffness: 300,
+    damping: 30,
+  }}
+  className="md:hidden fixed top-16 left-0 right-0 z-50 bg-[#0c0c0e] shadow-2xl border border-[#c69a3c]/30 overflow-hidden"
+  style={{
+    boxShadow:
+      '0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(198, 154, 60, 0.12)',
+  }}
+>
+  <div className="p-2">
+    <ul className="space-y-1">
+      {navLinks.map(
+        (link, index) => (
+          <motion.li
+            key={link.label}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 0.3,
+              delay: index * 0.1,
+              ease: 'easeOut',
+            }}
+          >
+            <Link
+              href={link.href}
+              className="block px-6 py-4 text-lg font-semibold tracking-wider text-[#e7e2d5] hover:text-[#e8c877] hover:bg-white/5 rounded-xl transition-all duration-300 text-center"
+              onClick={() => setIsMobileMenuOpen(false)}
             >
-              <div className="p-2">
-                <ul className="space-y-1">
-                  {[...navLinks, { href: '/contact', label: 'CONTACT' }].map(
-                    (link, index) => (
-                      <motion.li
-                        key={link.label}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{
-                          duration: 0.3,
-                          delay: index * 0.1,
-                          ease: 'easeOut',
-                        }}
-                      >
-                        <Link
-                          href={link.href}
-                          className="block px-6 py-4 text-lg font-semibold tracking-wider text-[#e7e2d5] hover:text-[#e8c877] hover:bg-white/5 rounded-xl transition-all duration-300 text-center"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          {link.label}
-                        </Link>
-                      </motion.li>
-                    )
-                  )}
-                </ul>
-              </div>
-            </motion.div>
-          </>
-        )}
+              {link.label}
+            </Link>
+          </motion.li>
+        )
+      )}
+      <motion.li
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{
+          duration: 0.3,
+          delay: 0.4,
+          ease: 'easeOut',
+        }}
+      >
+        <Link
+          href="/contact"
+          className="block px-6 py-4 text-lg font-semibold tracking-wider bg-[#c69a3c] hover:bg-[#e8c877] text-[#0b0b0b] rounded-xl transition-all duration-300 text-center"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          Contact Michael
+        </Link>
+      </motion.li>
+    </ul>
+  </div>
+</motion.div>
+            </>
+          )}
+        </AnimatePresence>
       </nav>
     </header>
   );
