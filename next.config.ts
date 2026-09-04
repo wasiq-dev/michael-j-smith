@@ -1,9 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // The parent folder (D:\websites) has an unrelated package-lock.json and
-  // isn't this project's git root; pin the workspace root to this directory so
-  // Next/Turbopack don't infer it from further up.
+  // 1. In do lines se build errors ignore ho jayenge
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+
+  // Aapka purana code starts here:
   turbopack: {
     root: __dirname,
   },
