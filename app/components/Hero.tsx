@@ -10,7 +10,7 @@ interface HeroProps {
 export default function Hero({ className = '' }: HeroProps) {
   return (
     <section
-      className={`relative h-[38vh] sm:h-[65vh] md:h-[85vh] lg:h-[100vh] xl:h-[100vh] flex items-center justify-center overflow-hidden pb-0 mb-0 bg-[radial-gradient(ellipse_at_center_80%,_#16294d_0%,_#0a1122_45%,_#050505_100%)] ${className}`}
+      className={`relative flex min-h-[100dvh] flex-col overflow-hidden pb-0 mb-0 bg-[radial-gradient(ellipse_at_center_80%,_#16294d_0%,_#0a1122_45%,_#050505_100%)] lg:h-[100vh] lg:items-center lg:justify-center xl:h-[100vh] ${className}`}
     >
       <Header />
       <HeroContent />
