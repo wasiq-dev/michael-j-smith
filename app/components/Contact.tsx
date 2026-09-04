@@ -13,7 +13,7 @@ export default function Footer() {
               href="/"
               className="font-display text-sm uppercase tracking-[0.18em] text-foreground"
             >
-              {SITE.authorName}
+              Michael <span className="text-accent">J.</span> Smith
             </Link>
             <p className="body-sm mt-1 text-muted">{SITE.footer.book}</p>
           </div>

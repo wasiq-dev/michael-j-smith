@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { SITE } from '../lib/site-content';
 import SiteHeader from './SiteHeader';
 import FadeIn from './shared/FadeIn';
+import ButtonLink from './shared/ButtonLink';
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
@@ -48,14 +49,14 @@ export default function Hero() {
               className="font-display display-hero uppercase text-foreground sm:hidden"
             >
               <span className="block">Michael</span>
-              <span className="block">J.</span>
+              <span className="block text-accent">J.</span>
               <span className="block">Smith</span>
             </motion.h1>
             <motion.h1
               {...textMotion(0.05)}
               className="font-display display-hero hidden uppercase text-foreground sm:block lg:hidden"
             >
-              <span className="block">Michael J.</span>
+              <span className="block">Michael <span className="text-accent">J.</span></span>
               <span className="block">Smith</span>
             </motion.h1>
             <motion.h1
@@ -63,7 +64,7 @@ export default function Hero() {
               className="font-display display-hero hidden uppercase text-foreground lg:block"
             >
               <span className="block">Michael</span>
-              <span className="block">J. Smith</span>
+              <span className="block"><span className="text-accent">J.</span> Smith</span>
             </motion.h1>
 
             <FadeIn delay={0.15}>
@@ -71,12 +72,23 @@ export default function Hero() {
                 {SITE.hero.description}
               </p>
             </FadeIn>
+
+            <FadeIn delay={0.2}>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4 lg:justify-start">
+                <ButtonLink href="/books" variant="primary">
+                  Books
+                </ButtonLink>
+                <ButtonLink href="/contact" variant="secondary">
+                  Contact
+                </ButtonLink>
+              </div>
+            </FadeIn>
           </div>
 
           {/* Portrait */}
-          <FadeIn delay={0.1} className="relative mx-auto w-full max-w-[260px] sm:max-w-[300px] lg:mx-0 lg:ml-auto lg:max-w-[340px]">
+          <FadeIn delay={0.1} className="relative mx-auto mt-16 w-full max-w-[260px] sm:max-w-[300px] lg:mx-0 lg:ml-auto lg:max-w-[340px] lg:mt-24">
             <motion.div
-              className="relative aspect-[3/4] overflow-hidden"
+              className="relative overflow-hidden"
               initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
               whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -85,14 +97,11 @@ export default function Hero() {
               <Image
                 src={SITE.author.portrait}
                 alt="Michael J. Smith"
-                fill
+                width={340}
+                height={453}
                 priority
-                className="object-cover object-top"
+                className="object-contain"
                 sizes="(max-width: 1024px) 300px, 340px"
-              />
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 ring-1 ring-inset ring-[var(--hairline)]"
               />
             </motion.div>
           </FadeIn>

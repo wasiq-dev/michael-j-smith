@@ -52,7 +52,8 @@ export const SITE = {
       'That floor-level view became the foundation for Between the 4 Lines and for honest conversation about leadership, communication and accountability in the game.',
       'Michael writes and speaks from the perspective of someone who has seen the culture of youth basketball up close — not as a spectator, but from the official\'s chair at center court.',
     ],
-    portrait: '/images/author-hero.png',
+    portrait: '/images/author1.png',
+    aboutPortrait: '/images/author-hero.png',
   },
   cta: {
     heading: 'Ready to Change the Game?',

@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { SITE } from '../lib/site-content';
@@ -50,14 +49,9 @@ export default function SiteHeader({
             aria-label="Michael J. Smith homepage"
             className="transition-opacity hover:opacity-80"
           >
-            <Image
-              src="/images/new-logo.png"
-              alt="Michael J. Smith"
-              width={160}
-              height={44}
-              className="h-11 w-auto sm:h-12"
-              priority
-            />
+            <span className="font-display text-lg font-bold uppercase tracking-wide text-foreground sm:text-xl">
+              Michael <span className="text-accent">J.</span> Smith
+            </span>
           </Link>
 
           <ul className="hidden items-center gap-7 md:flex lg:gap-9">

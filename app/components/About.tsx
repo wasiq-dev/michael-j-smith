@@ -44,7 +44,7 @@ export default function About() {
                 className="absolute inset-0 rounded-full bg-surface ring-1 ring-[var(--hairline)]"
               />
               <Image
-                src={author.portrait}
+                src={author.aboutPortrait}
                 alt="Portrait of Michael J. Smith"
                 width={400}
                 height={400}
