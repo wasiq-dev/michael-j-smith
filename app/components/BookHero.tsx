@@ -39,7 +39,7 @@ export default function BookHero({ className = '' }: BookHeroProps) {
                 i < arr.length - 1 ? (
                   <span key={i}>
                     {part}
-                    <span className="four-motif-strong italic text-accent">4</span>
+                    <span className="four-motif-strong text-accent">4</span>
                   </span>
                 ) : (
                   <span key={i}>{part}</span>

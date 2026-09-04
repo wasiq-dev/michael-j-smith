@@ -17,7 +17,7 @@ export default function About() {
               <h2 className="font-display display-md uppercase text-foreground">
                 {author.heading}
               </h2>
-              <p className="mt-4 font-display text-2xl text-foreground md:text-[1.75rem] md:leading-snug">
+              <p className="mt-4 font-display text-2xl font-extrabold leading-tight text-foreground md:text-[1.75rem]">
                 {author.name}
               </p>
             </FadeIn>

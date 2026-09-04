@@ -22,12 +22,12 @@ export default function BookAbout({ className = '' }: BookAboutProps) {
             {cta.heading}
           </h2>
 
-          <p className="font-display mt-6 text-2xl leading-snug text-foreground md:text-[1.75rem]">
+              <p className="font-display mt-6 text-2xl font-extrabold leading-tight text-foreground md:text-[1.75rem]">
             {cta.subheading.split('4').map((part, i, arr) =>
               i < arr.length - 1 ? (
                 <span key={i}>
                   {part}
-                  <span className="four-motif-strong italic text-accent">4</span>
+                  <span className="four-motif-strong text-accent">4</span>
                 </span>
               ) : (
                 <span key={i}>{part}</span>

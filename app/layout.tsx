@@ -1,12 +1,11 @@
 import type { Metadata } from 'next';
-import { Cormorant_Garamond, Manrope, Bebas_Neue } from 'next/font/google';
+import { Montserrat, Manrope, Bebas_Neue } from 'next/font/google';
 import './globals.css';
 
-const cormorant = Cormorant_Garamond({
+const montserrat = Montserrat({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-  variable: '--font-cormorant',
+  weight: ['600', '700', '800'],
+  variable: '--font-heading',
 });
 
 const manrope = Manrope({
@@ -60,7 +59,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${manrope.variable} ${bebas.variable}`}
+      className={`${montserrat.variable} ${manrope.variable} ${bebas.variable}`}
       suppressHydrationWarning
     >
       <body className="font-body antialiased">

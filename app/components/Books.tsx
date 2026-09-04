@@ -32,7 +32,7 @@ export default function Books() {
             <FadeIn>
               <h2 className="font-display display-md uppercase text-foreground">
                 Between the{' '}
-                <span className="four-motif-strong italic text-accent">4</span>{' '}
+                <span className="four-motif-strong text-accent">4</span>{' '}
                 Lines
               </h2>
               <p className="mt-3 font-body text-sm uppercase tracking-[0.14em] text-accent">

@@ -26,7 +26,7 @@
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --font-sans: var(--font-manrope);
-  --font-serif: var(--font-cormorant);
+  --font-serif: var(--font-heading);
   --font-accent: var(--font-bebas);
 }
 
@@ -61,7 +61,9 @@ body::before {
 
 /* Typography utilities */
 .font-display {
-  font-family: var(--font-cormorant), Georgia, serif;
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.025em;
 }
 
 .font-body {
@@ -73,24 +75,51 @@ body::before {
 }
 
 h1, h2, h3, h4 {
-  font-family: var(--font-cormorant), Georgia, serif;
-  font-weight: 500;
-  letter-spacing: 0.01em;
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .display-xl {
   font-size: clamp(2.25rem, 4.5vw, 3.75rem);
-  line-height: 1.02;
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+
+.display-hero {
+  font-size: clamp(3.25rem, 11vw, 4.5rem);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+}
+
+@media (min-width: 640px) {
+  .display-hero {
+    font-size: clamp(3.5rem, 8vw, 5.25rem);
+    line-height: 0.94;
+  }
+}
+
+@media (min-width: 1024px) {
+  .display-hero {
+    font-size: clamp(4.5rem, 7vw, 6.5rem);
+    line-height: 0.96;
+  }
 }
 
 .display-lg {
   font-size: clamp(1.95rem, 3.5vw, 3rem);
-  line-height: 1.06;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.025em;
 }
 
 .display-md {
   font-size: clamp(1.5rem, 2.4vw, 2.25rem);
-  line-height: 1.14;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
 }
 
 .body-lg {
@@ -119,8 +148,8 @@ h1, h2, h3, h4 {
 
 .four-motif-strong {
   color: var(--accent);
-  font-style: italic;
-  line-height: 0.85;
+  font-weight: 800;
+  line-height: 0.95;
 }
 
 /* Layout */

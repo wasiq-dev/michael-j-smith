@@ -21,7 +21,7 @@ export default function BookFeatures() {
                 <span className="font-body text-[0.7rem] uppercase tracking-[0.18em] text-accent">
                   {item.number}
                 </span>
-                <h3 className="font-display mt-3.5 text-[1.35rem] text-foreground md:text-[1.5rem]">
+                <h3 className="font-display mt-3.5 text-[1.35rem] font-bold text-foreground md:text-[1.5rem]">
                   {item.title}
                 </h3>
                 <p className="body-sm mt-3.5 text-muted">{item.description}</p>

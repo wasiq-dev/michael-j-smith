@@ -24,11 +24,11 @@ export default function Hero() {
       <SiteHeader variant="overlay" />
 
       <div className="content-wrap relative z-10 flex min-h-[100dvh] flex-col justify-center pt-[var(--header-height)] pb-10 lg:min-h-screen lg:pb-16">
-        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="grid grid-cols-1 items-center gap-5 sm:gap-6 lg:grid-cols-2 lg:gap-8">
           {/* Name + intro */}
           <div className="text-center lg:text-left">
             <FadeIn>
-              <p className="font-body mb-5 text-[0.7rem] uppercase tracking-[0.22em] text-muted">
+              <p className="font-body mb-4 text-[0.7rem] uppercase tracking-[0.22em] text-muted">
                 {SITE.hero.subtitle.split('4').map((part, i, arr) =>
                   i < arr.length - 1 ? (
                     <span key={i}>
@@ -45,7 +45,7 @@ export default function Hero() {
             {/* Mobile / tablet name */}
             <motion.h1
               {...textMotion(0.05)}
-              className="font-display display-xl uppercase text-foreground sm:hidden"
+              className="font-display display-hero uppercase text-foreground sm:hidden"
             >
               <span className="block">Michael</span>
               <span className="block">J.</span>
@@ -53,21 +53,21 @@ export default function Hero() {
             </motion.h1>
             <motion.h1
               {...textMotion(0.05)}
-              className="font-display display-xl hidden uppercase text-foreground sm:block lg:hidden"
+              className="font-display display-hero hidden uppercase text-foreground sm:block lg:hidden"
             >
               <span className="block">Michael J.</span>
               <span className="block">Smith</span>
             </motion.h1>
             <motion.h1
               {...textMotion(0.05)}
-              className="font-display display-xl hidden uppercase text-foreground lg:block"
+              className="font-display display-hero hidden uppercase text-foreground lg:block"
             >
               <span className="block">Michael</span>
               <span className="block">J. Smith</span>
             </motion.h1>
 
             <FadeIn delay={0.15}>
-              <p className="body-lg mx-auto mt-7 max-w-md text-muted lg:mx-0">
+              <p className="body-lg mx-auto mt-5 max-w-md text-muted lg:mx-0">
                 {SITE.hero.description}
               </p>
             </FadeIn>
