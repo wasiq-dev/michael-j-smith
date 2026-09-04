@@ -1,39 +1,42 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
-import { FaAmazon, FaBookOpen, FaShoppingCart, FaGoogle } from 'react-icons/fa';
-
-const NextImage = Image;
-
-const SocialIcon = ({
-  href,
-  icon: Icon,
-  bgColor,
-  textColor,
-}: {
-  href: string;
-  icon: React.ElementType;
-  bgColor: string;
-  textColor: string;
-}) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className={`flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg ${bgColor} ${textColor}`}
-  >
-    <Icon className="h-6 w-6" />
-  </a>
-);
+import { SITE } from '../lib/site-content';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0b1526] text-[#d7dbe3] font-poppins py-4">
-      <div className="mx-auto max-w-7xl px-8 text-center">
-        <p className="text-xs text-[#8a919e]">
-          Copyright © {new Date().getFullYear()} All Rights Reserved
-        </p>
+    <footer className="border-t border-[var(--hairline)] bg-background py-10">
+      <div className="content-wrap">
+        <div className="flex flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left">
+          <div>
+            <Link
+              href="/"
+              className="font-display text-sm uppercase tracking-[0.18em] text-foreground"
+            >
+              {SITE.authorName}
+            </Link>
+            <p className="body-sm mt-1 text-muted">{SITE.footer.book}</p>
+          </div>
+
+          <nav aria-label="Footer navigation">
+            <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+              {SITE.nav.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="body-sm text-muted transition-colors hover:text-foreground"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <p className="body-sm text-muted-dark">
+            © {new Date().getFullYear()} All rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );

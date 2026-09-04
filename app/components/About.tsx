@@ -1,85 +1,59 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { SITE } from '../lib/site-content';
+import FadeIn from './shared/FadeIn';
 
 export default function About() {
+  const { author } = SITE;
+
   return (
-    <section className="bg-[#050505] w-full overflow-x-hidden pb-8 sm:pb-12 md:pb-16">
-      {/* Main Content Area */}
-      <main className="max-w-screen-xl mx-auto pt-8 pb-2 sm:py-16 md:py-20 lg:pb-8 px-4 sm:px-6 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-6 sm:gap-y-12 lg:gap-y-16 gap-x-8 items-center">
-          {/* Left Column: Text Content */}
-          <motion.div
-            className="order-2 lg:order-1 text-center lg:text-left"
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            viewport={{ once: false }}
-          >
-            <h2 className="font-anton text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gold-gradient uppercase mb-4 sm:mb-6">
-              MEET MICHAEL
-            </h2>
-            <h3 className="font-poppins text-xl sm:text-2xl md:text-3xl font-bold text-[#c69a3c] mb-6 sm:mb-8">
-              Michael J. Smith
-            </h3>
-            <div className="space-y-4 sm:space-y-6 max-w-xl mx-auto lg:mx-0">
-              <p className="font-poppins text-xs sm:text-sm md:text-base text-[#c7ccd6] leading-relaxed">
-                Michael J. Smith has spent 30 years at the center of youth, high school and NCAA Division I women's basketball as an official - a vantage point almost no coach, parent or administrator ever gets to hold.
+    <section id="about" className="section-padding bg-background">
+      <div className="content-wrap">
+        <div className="grid grid-cols-1 items-center gap-11 lg:grid-cols-2 lg:gap-[4.5rem]">
+          {/* Text */}
+          <div className="order-2 text-center lg:order-1 lg:text-left">
+            <FadeIn>
+              <h2 className="font-display display-md uppercase text-foreground">
+                {author.heading}
+              </h2>
+              <p className="mt-4 font-display text-2xl text-foreground md:text-[1.75rem] md:leading-snug">
+                {author.name}
               </p>
+            </FadeIn>
 
-              <p className="font-poppins text-xs sm:text-sm md:text-base text-[#c7ccd6] leading-relaxed">
-                That floor-level view became the foundation for Between the 4 Lines and for a speaking career built on honest, hard-won lessons in leadership, communication and accountability.
-              </p>
-
-              <div className="mt-6 sm:mt-8 md:mt-10">
-                <div className="space-y-3 sm:space-y-4">
-                  <div className="flex items-start">
-                    <span className="font-poppins text-xs sm:text-sm md:text-base font-bold text-[#c69a3c] w-16 sm:w-20 flex-shrink-0">1995</span>
-                    <p className="font-poppins text-xs sm:text-sm md:text-base text-[#c7ccd6]">Began officiating basketball</p>
-                  </div>
-                  <div className="flex items-start">
-                    <span className="font-poppins text-xs sm:text-sm md:text-base font-bold text-[#c69a3c] w-16 sm:w-20 flex-shrink-0">—</span>
-                    <p className="font-poppins text-xs sm:text-sm md:text-base text-[#c7ccd6]">NCAA Division I Women's Basketball official</p>
-                  </div>
-                  <div className="flex items-start">
-                    <span className="font-poppins text-xs sm:text-sm md:text-base font-bold text-[#c69a3c] w-16 sm:w-20 flex-shrink-0">—</span>
-                    <p className="font-poppins text-xs sm:text-sm md:text-base text-[#c7ccd6]">Founder, Tournament Sports Unlimited</p>
-                  </div>
-                  <div className="flex items-start">
-                    <span className="font-poppins text-xs sm:text-sm md:text-base font-bold text-[#c69a3c] w-16 sm:w-20 flex-shrink-0">—</span>
-                    <p className="font-poppins text-xs sm:text-sm md:text-base text-[#c7ccd6]">Founder, One Pivotal Move</p>
-                  </div>
-                  <div className="flex items-start">
-                    <span className="font-poppins text-xs sm:text-sm md:text-base font-bold text-[#c69a3c] w-16 sm:w-20 flex-shrink-0">Today</span>
-                    <p className="font-poppins text-xs sm:text-sm md:text-base text-[#c7ccd6]">Author & Keynote Speaker</p>
-                  </div>
-                </div>
+            <FadeIn delay={0.1}>
+              <div className="mt-9 space-y-6">
+                {author.bio.map((paragraph) => (
+                  <p
+                    key={paragraph.slice(0, 28)}
+                    className="body-lg mx-auto max-w-xl text-muted lg:mx-0"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
               </div>
-            </div>
-          </motion.div>
+            </FadeIn>
+          </div>
 
-          {/* Right Column: Image */}
-          <motion.div
-            className="order-1 lg:order-2 flex justify-center lg:justify-end"
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            viewport={{ once: false }}
-          >
+          {/* Portrait */}
+          <FadeIn delay={0.05} className="order-1 flex justify-center lg:order-2 lg:justify-end">
             <div className="relative">
-              <div className="absolute inset-0 bg-[#0b1f3a] rounded-full w-[180px] h-[180px] sm:w-[230px] sm:h-[230px] md:w-[282px] md:h-[282px] lg:w-[358px] lg:h-[358px] xl:w-[460px] xl:h-[460px] ring-1 ring-[#c69a3c]/40"></div>
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 rounded-full bg-surface ring-1 ring-[var(--hairline)]"
+              />
               <Image
-                src="/images/author-hero.png"
-                alt="Portrait of the author"
-                width={600}
-                height={600}
-                className="relative z-10 object-cover w-[180px] h-[180px] sm:w-[230px] sm:h-[230px] md:w-[282px] md:h-[282px] lg:w-[358px] lg:h-[358px] xl:w-[460px] xl:h-[460px] rounded-full"
+                src={author.portrait}
+                alt="Portrait of Michael J. Smith"
+                width={400}
+                height={400}
+                className="relative z-10 h-[200px] w-[200px] rounded-full object-cover sm:h-[240px] sm:w-[240px] md:h-[260px] md:w-[260px]"
               />
             </div>
-          </motion.div>
+          </FadeIn>
         </div>
-      </main>
+      </div>
     </section>
   );
 }

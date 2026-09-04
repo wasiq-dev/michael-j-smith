@@ -1,151 +1,99 @@
 'use client';
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { FaAmazon, FaBookOpen, FaShoppingCart, FaGoogle, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaTwitter, FaInstagram, FaLinkedin, FaAmazon } from 'react-icons/fa';
+import { SITE } from '../lib/site-content';
+import FadeIn from './shared/FadeIn';
 
-const SocialIcon = ({
-  href,
-  icon: Icon,
-  bgColor,
-  textColor,
-}: {
-  href: string;
-  icon: React.ElementType;
-  bgColor: string;
-  textColor: string;
-}) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className={`flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg ${bgColor} ${textColor}`}
-  >
-    <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
-  </a>
-);
+const socialLinks = [
+  { href: '#', icon: FaAmazon, label: 'Amazon' },
+  { href: '#', icon: FaTwitter, label: 'Twitter' },
+  { href: '#', icon: FaInstagram, label: 'Instagram' },
+  { href: '#', icon: FaLinkedin, label: 'LinkedIn' },
+];
 
 export default function ContactSection() {
   return (
-    <section className="py-16 sm:py-20 md:py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left: Contact Info & Socials */}
-          <div className="space-y-8">
-            <div className="text-center lg:text-left">
-              <Link
-                href="/"
-                aria-label="Homepage"
-                className="inline-block hover:opacity-80 transition-opacity duration-200 mb-6"
-              >
-                <Image
-                  src="/images/new-logo.png"
-                  alt="Michael J.Smith"
-                  width={360}
-                  height={100}
-                  className="w-auto h-20 sm:h-24 md:h-28 lg:h-32 mx-auto lg:mx-0"
-                />
-              </Link>
-            </div>
-            <div>
-              <h2 className="font-anton text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gold-gradient uppercase mb-4">
-                Get In Touch
-              </h2>
-              <p className="font-poppins text-sm sm:text-base md:text-lg text-[#d7dbe3] leading-relaxed">
-                Have questions about the book? Want to request a signed copy or discuss bulk orders? 
-                Reach out and I'll get back to you as soon as possible.
+    <section className="section-padding bg-surface">
+      <div className="content-wrap">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-20">
+          <FadeIn className="lg:col-span-5">
+            <p className="font-body text-[0.65rem] uppercase tracking-[0.28em] text-muted">
+              Contact
+            </p>
+            <h2 className="font-display display-md mt-1 uppercase text-foreground">
+              {SITE.contact.heading}
+            </h2>
+            <p className="body-lg mt-7 max-w-md text-muted">{SITE.contact.description}</p>
+
+            <div className="mt-10">
+              <p className="font-body text-[0.65rem] uppercase tracking-[0.22em] text-muted-dark">
+                Connect
               </p>
+              <div className="mt-4 flex gap-3">
+                {socialLinks.map(({ href, icon: Icon, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="flex h-10 w-10 items-center justify-center border border-[var(--hairline)] text-muted transition-colors hover:border-accent hover:text-accent"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                ))}
+              </div>
             </div>
+          </FadeIn>
 
-            <div className="space-y-4">
-              <h3 className="font-poppins text-base sm:text-lg md:text-xl font-bold text-[#e8c877] uppercase tracking-wider">
-                Connect With Me
+          <FadeIn delay={0.1} className="lg:col-span-7">
+            <div className="border border-[var(--hairline)] bg-background p-6 sm:p-10">
+              <h3 className="font-display text-[1.35rem] uppercase text-foreground">
+                Send a Message
               </h3>
-              <div className="flex flex-wrap gap-4">
-                <SocialIcon
-                  href="#"
-                  icon={FaAmazon}
-                  bgColor="bg-gradient-to-br from-[#c69a3c] to-[#8a6a25]"
-                  textColor="text-[#0b0b0b]"
-                />
-                <SocialIcon
-                  href="#"
-                  icon={FaTwitter}
-                  bgColor="bg-gradient-to-br from-[#1da1f2] to-[#0c85d0]"
-                  textColor="text-white"
-                />
-                <SocialIcon
-                  href="#"
-                  icon={FaInstagram}
-                  bgColor="bg-gradient-to-br from-[#e1306c] to-[#c13584]"
-                  textColor="text-white"
-                />
-                <SocialIcon
-                  href="#"
-                  icon={FaLinkedin}
-                  bgColor="bg-gradient-to-br from-[#0077b5] to-[#005885]"
-                  textColor="text-white"
-                />
-                <SocialIcon
-                  href="#"
-                  icon={FaBookOpen}
-                  bgColor="bg-gradient-to-br from-[#13294d] to-[#0b1f3a]"
-                  textColor="text-[#e8c877]"
-                />
-                <SocialIcon
-                  href="#"
-                  icon={FaGoogle}
-                  bgColor="bg-gradient-to-br from-[#4285f4] to-[#3367d6]"
-                  textColor="text-white"
-                />
-              </div>
+              <form className="mt-8 space-y-6" onSubmit={(e) => e.preventDefault()}>
+                <div>
+                  <label htmlFor="contact-name" className="body-sm mb-2 block text-muted">
+                    Your Name
+                  </label>
+                  <input
+                    id="contact-name"
+                    type="text"
+                    placeholder="Enter your name"
+                    className="form-input"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="contact-email" className="body-sm mb-2 block text-muted">
+                    Email Address
+                  </label>
+                  <input
+                    id="contact-email"
+                    type="email"
+                    placeholder="Enter your email"
+                    className="form-input"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="contact-message" className="body-sm mb-2 block text-muted">
+                    Your Message
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    placeholder="Enter your message"
+                    rows={4}
+                    className="form-input resize-none"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full rounded-sm bg-accent px-6 py-3 font-body text-xs uppercase tracking-[0.16em] text-[#080808] transition-colors hover:bg-accent/90"
+                >
+                  Send Message
+                </button>
+              </form>
             </div>
-          </div>
-
-          {/* Right: Contact Form */}
-          <div className="bg-[#121216] rounded-3xl p-6 sm:p-8 md:p-10 border border-[#c69a3c]/20 shadow-2xl">
-            <h3 className="font-anton text-xl sm:text-2xl md:text-3xl font-bold text-[#f4efe3] uppercase mb-6">
-              Send a Message
-            </h3>
-            <form className="space-y-6">
-              <div>
-                <label className="block font-poppins text-sm font-semibold text-[#e8c877] mb-2">
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="Enter your name"
-                  className="w-full rounded-xl border border-[#c69a3c]/25 bg-[#0a0a0c] p-3 sm:p-4 text-sm sm:text-base text-[#f4efe3] placeholder-[#7c828f] focus:outline-none focus:ring-2 focus:ring-[#c69a3c]"
-                />
-              </div>
-              <div>
-                <label className="block font-poppins text-sm font-semibold text-[#e8c877] mb-2">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="w-full rounded-xl border border-[#c69a3c]/25 bg-[#0a0a0c] p-3 sm:p-4 text-sm sm:text-base text-[#f4efe3] placeholder-[#7c828f] focus:outline-none focus:ring-2 focus:ring-[#c69a3c]"
-                />
-              </div>
-              <div>
-                <label className="block font-poppins text-sm font-semibold text-[#e8c877] mb-2">
-                  Your Message
-                </label>
-                <textarea
-                  placeholder="Enter your message"
-                  rows={4}
-                  className="w-full rounded-xl border border-[#c69a3c]/25 bg-[#0a0a0c] p-3 sm:p-4 text-sm sm:text-base text-[#f4efe3] placeholder-[#7c828f] focus:outline-none focus:ring-2 focus:ring-[#c69a3c] resize-none"
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                className="w-full rounded-xl bg-gradient-to-r from-[#c69a3c] to-[#e8c877] px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold uppercase tracking-wider text-[#0b0b0b] transition-all hover:shadow-lg hover:scale-[1.02]"
-              >
-                Send Message
-              </button>
-            </form>
-          </div>
+          </FadeIn>
         </div>
       </div>
     </section>
